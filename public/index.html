@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>PadosiSafe: neighbours looking out for neighbours</title>
+  <meta name="description" content="A neighbour check-in circle and hyperlocal safety board for India. No sign-up, no email.">
+  <meta name="theme-color" content="#1b2140">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip" href="#panel">Skip to the app</a>
+
+  <header class="top">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#1b2140"/><path d="M16 6.5 7 12.2V25h6.2v-6.4h5.6V25H25V12.2z" fill="#f6b21b"/><circle cx="16" cy="15" r="2.3" fill="#1b2140"/></svg>
+      <div>
+        <h1>PadosiSafe</h1>
+        <p>Neighbours looking out for neighbours</p>
+      </div>
+    </div>
+    <a class="btn btn-emergency" href="tel:112">Emergency: call 112</a>
+  </header>
+
+  <p class="disclaimer" role="note">PadosiSafe is a community tool. It does not replace the police, fire brigade or ambulance. If someone is in danger, call <a href="tel:112">112</a> first.</p>
+
+  <main class="layout">
+    <section class="mapwrap" aria-label="Map of India">
+      <div id="map" role="application" aria-label="Interactive map. Tap to drop a pin."></div>
+      <p id="mapNote" class="map-note" hidden></p>
+    </section>
+
+    <section id="panel" class="panel" tabindex="-1">
+      <div class="where" aria-label="Your location">
+        <form id="searchForm" class="search" role="search" autocomplete="off">
+          <label for="searchInput" class="sr">Search a place in India</label>
+          <input id="searchInput" type="search" placeholder="Search your area, e.g. Koramangala" maxlength="80" enterkeyhint="search">
+          <button class="btn btn-small" type="submit">Search</button>
+        </form>
+        <ul id="searchResults" class="results" hidden></ul>
+        <div class="where-row">
+          <button id="gpsBtn" class="btn btn-small btn-ghost" type="button">Use my location</button>
+          <label class="radius">
+            <span>Show within</span>
+            <select id="radiusSelect" disabled>
+              <option value="">All of India</option>
+              <option value="2">2 km</option>
+              <option value="5">5 km</option>
+              <option value="10">10 km</option>
+              <option value="25">25 km</option>
+              <option value="100">100 km</option>
+            </select>
+          </label>
+        </div>
+        <div id="cityChips" class="chips" role="group" aria-label="Jump to a city"></div>
+        <p id="pinStatus" class="pin-status" aria-live="polite">No pin yet. Search, pick a city, use your location, or tap the map.</p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Sections">
+        <button role="tab" id="tab-circle" aria-controls="pane-circle" data-tab="circle" aria-selected="true">My circle</button>
+        <button role="tab" id="tab-alerts" aria-controls="pane-alerts" data-tab="alerts" aria-selected="false" tabindex="-1">Alerts <span id="alertBadge" class="badge" hidden></span></button>
+        <button role="tab" id="tab-places" aria-controls="pane-places" data-tab="places" aria-selected="false" tabindex="-1">Resources</button>
+        <button role="tab" id="tab-help" aria-controls="pane-help" data-tab="help" aria-selected="false" tabindex="-1">Help</button>
+      </div>
+
+      <div id="pane-circle" class="pane" role="tabpanel" aria-labelledby="tab-circle"></div>
+      <div id="pane-alerts" class="pane" role="tabpanel" aria-labelledby="tab-alerts" hidden></div>
+      <div id="pane-places" class="pane" role="tabpanel" aria-labelledby="tab-places" hidden></div>
+      <div id="pane-help" class="pane" role="tabpanel" aria-labelledby="tab-help" hidden></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Built for Neighborhood Hacks. Map data &copy; <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a> contributors. No accounts, no emails. Your circle is just a code and a name.</p>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><p class="noscript">PadosiSafe needs JavaScript. If this is an emergency, call 112.</p></noscript>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

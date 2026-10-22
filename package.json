@@ -1,0 +1,15 @@
+{
+  "name": "padosisafe",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PadosiSafe — a neighbour check-in circle and hyperlocal safety board for India. No sign-up, no email.",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": "22.x"
+  }
+}
